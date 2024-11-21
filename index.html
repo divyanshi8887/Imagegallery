@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Image Gallery</title>
+	<style>
+	
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: cursive, sans-serif;
+    /* Main page dynamic background */
+    background: linear-gradient(135deg, #c97777, #ffb6b6, #fce38a, #eaafc8, #c97777);
+    background-size: 300% 300%;
+    animation: gradientBG 12s ease infinite;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+h2{
+	width: 100%;
+    background: linear-gradient(125deg,#ffb6b6, #fce38a, #eaafc8);
+    background-size: 200% 200%;
+    animation: imgGradient 10s ease infinite;
+    border-radius: 10px;
+	border-style:double;
+	 padding:5px;
+	 text-align:center;
+	 text-transform:capitalize;
+}
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.gallery-container {
+    position: relative;
+    width: 80%;
+    max-width: 500px;
+    margin:0 auto;
+    box-shadow: lighter pink;
+    border-radius: 20px;
+    overflow: hidden;
+    padding: 15px;
+}
+
+.gallery {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+.gallery img {
+    width: 100%;
+    display: none;
+    background: linear-gradient(125deg, pink,red,blue,green);
+    background-size: 200% 200%;
+    animation: imgGradient 10s ease infinite;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+@keyframes imgGradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.gallery img.active {
+    display: block;
+}
+
+.controls {
+    text-align: center;
+    margin-top: 15px;
+}
+
+.controls button {
+    background-color: #333;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin: 0 5px;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 25px;
+    transition: background-color 0.3s ease, transform 0.2s;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.controls button:hover {
+    background-color: #555;
+    transform: scale(1.05);
+}
+	</style>
+	
+</head>
+<body>
+
+    <div class="gallery-container">
+        <div class="gallery">
+			<h2>12 Jyotirlinga darshan</h2>
+            <img src=" https://blog.yatradham.org/wp-content/uploads/2020/07/somnath.jpg" alt="Image 1" class="active">
+            <img src="https://ihplb.b-cdn.net/wp-content/uploads/2021/12/bhasma-aarti-mahakaleshwar.jpg" alt="Image 2">
+            <img src="https://ihplb.b-cdn.net/wp-content/uploads/2021/12/Omkareshwar-Jyotrilinga-1.jpg " alt="Image 3">
+            <img src="https://ihplb.b-cdn.net/wp-content/uploads/2021/12/kedarnath-temple-12-jyotirlinga-in-india-photo-with-name-and-place.jpg " alt="Image 4">
+			<img src="https://ihplb.b-cdn.net/wp-content/uploads/2021/12/Bhimashankar-Jyotirlinga.jpg " alt="Image 5">
+            <img src="https://ihplb.b-cdn.net/wp-content/uploads/2021/12/Kashi-Vishwanath-Jyotirlinga.jpg " alt="Image 6">
+            <img src=" https://ihplb.b-cdn.net/wp-content/uploads/2021/12/Trimbakeshwar-Jyotirlinga.jpg" alt="Image 7">
+			<img src="https://ihplb.b-cdn.net/wp-content/uploads/2021/12/nageshvara-jyotirlinga-image.jpg " alt="Image 8">
+            <img src="https://ihplb.b-cdn.net/wp-content/uploads/2021/12/Vaidyanath-Jyotrilinga.jpg " alt="Image 9">
+            <img src="https://shrimathuraji.com/wp-content/uploads/2024/04/ghushmeshwar-jyotirlinga.jpg " alt="Image 10">
+			<img src="https://www.vedadhara.com/audios/rameswaram_temple_swamy.webp " alt="Image 11">
+            <img src="https://shrimathuraji.com/wp-content/uploads/2024/04/srisailam-mallikarjuna-jyotirlinga.jpg " alt="Image 12">
+			
+        </div>
+        <div class="controls">
+            <button id="Previous">Previous</button>
+            <button id="next">Next</button>
+        </div>
+    </div>
+
+    <script>
+	const images = document.querySelectorAll('.gallery img');
+let currentIndex = 0;
+
+// Image navigation
+document.getElementById('next').addEventListener('click', () => {
+    images[currentIndex].classList.remove('active');
+    currentIndex = (currentIndex + 1) % images.length;
+    images[currentIndex].classList.add('active');
+});
+
+document.getElementById('prev').addEventListener('click', () => {
+    images[currentIndex].classList.remove('active');
+    currentIndex = (currentIndex - 1 + images.length) % images.length;
+    images[currentIndex].classList.add('active');
+});
+	</script>
+
+</body>
+</html>
